@@ -10,13 +10,9 @@
   --dark:#0b0b0f;
   --muted:#bdbdbd;
   --card:#111218;
-  --bg-image: none; /* set to: url('path/to/image.jpg') to use custom bg */
 }
 *{box-sizing:border-box;font-family:Inter, "Segoe UI", Roboto, system-ui, sans-serif}
-html,body{height:100%;margin:0;background:
-  linear-gradient(180deg, rgba(12,12,14,0.85), rgba(4,4,6,0.95)),
-  var(--bg-image);
-  background-size:cover;background-position:center;color:#fff}
+html,body{height:100%;margin:0;background:#0b0b0f;color:#fff}
 .container{max-width:980px;margin:28px auto;padding:20px}
 .header{display:flex;align-items:center;gap:16px}
 .brand-logo{
@@ -26,12 +22,8 @@ html,body{height:100%;margin:0;background:
 }
 .title{font-size:20px;font-weight:700}
 .lead{color:var(--muted);margin-top:6px;font-size:13px}
-
-/* Layout */
 .grid{display:grid;grid-template-columns:1fr 360px;gap:18px;margin-top:18px}
 @media (max-width:900px){.grid{grid-template-columns:1fr} .aside{order:2}}
-
-/* Card */
 .card{background:linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.02));
   border:1px solid rgba(255,255,255,0.04);padding:18px;border-radius:12px}
 .package{display:flex;gap:12px;align-items:center;padding:12px;border-radius:10px;margin-bottom:10px;
@@ -40,11 +32,9 @@ html,body{height:100%;margin:0;background:
 .package.selected{outline:2px solid rgba(255,122,0,0.18);box-shadow:0 6px 18px rgba(255,122,0,0.06)}
 .package .info{flex:1}
 .badge{background:rgba(255,255,255,0.06);padding:6px 10px;border-radius:8px;font-weight:700}
-
-/* form */
 .field{margin-bottom:12px}
 label{display:block;color:var(--muted);font-size:13px;margin-bottom:6px}
-input[type="text"],input[type="tel"]{
+input[type="text"]{
   width:100%;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);
   background:transparent;color:#fff;font-size:15px
 }
@@ -54,24 +44,15 @@ input[type="text"],input[type="tel"]{
   cursor:pointer;font-size:15px
 }
 .ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff;padding:10px;border-radius:10px}
-
-/* aside */
 .aside .card{position:sticky;top:20px}
 .summary{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
 .small{font-size:13px;color:var(--muted)}
 .note{font-size:13px;color:var(--muted);margin-top:8px}
-
-/* modal */
 .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(2,2,2,0.6)}
 .modal.show{display:flex}
 .modal .box{width:420px;max-width:94%;background:var(--card);padding:18px;border-radius:12px}
 .pay-options{display:flex;gap:8px;flex-wrap:wrap}
 .pay-btn{flex:1;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#fff;cursor:pointer}
-
-/* admin simple link */
-.admin-link{display:inline-block;margin-top:8px;color:var(--accent);text-decoration:none;font-weight:700}
-
-/* tiny */
 .hint{font-size:13px;color:var(--muted)}
 .footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
 </style>
@@ -87,11 +68,10 @@ input[type="text"],input[type="tel"]{
   </div>
 
   <div class="grid">
-    <!-- MAIN -->
     <main>
       <div class="card">
         <h3>Top-up අරම්බ කරන්න</h3>
-        <p class="hint">Player UID (player ID) ඇතුලත් කරන්න. නිවැරදි UID දීනොමානැයි සේවාව delivery වෙන්නේ නැත.</p>
+        <p class="hint">Player UID (player ID) ඇතුලත් කරන්න.</p>
 
         <div class="field">
           <label>Free Fire UID</label>
@@ -105,28 +85,25 @@ input[type="text"],input[type="tel"]{
 
         <div style="margin-top:6px;margin-bottom:10px">
           <label>Package තෝරන්න</label>
-
           <div id="packages">
             <div class="package selected" data-amount="100" data-id="p1">
               <div class="info">
                 <div style="font-weight:800">50 Diamonds</div>
-                <div class="small">Fast delivery — popular</div>
+                <div class="small">රු.100</div>
               </div>
               <div class="badge">රු.100</div>
             </div>
-
             <div class="package" data-amount="200" data-id="p2">
               <div class="info">
                 <div style="font-weight:800">120 Diamonds</div>
-                <div class="small">Best value</div>
+                <div class="small">රු.200</div>
               </div>
               <div class="badge">රු.200</div>
             </div>
-
             <div class="package" data-amount="400" data-id="p3">
               <div class="info">
                 <div style="font-weight:800">250 Diamonds</div>
-                <div class="small">Big bundle</div>
+                <div class="small">රු.400</div>
               </div>
               <div class="badge">රු.400</div>
             </div>
@@ -135,23 +112,11 @@ input[type="text"],input[type="tel"]{
 
         <div class="field">
           <label>Payment method</label>
-          <div class="row">
-            <button id="payNow" class="btn" style="flex:1">Pay Now</button>
-            <button id="payLater" class="ghost" style="flex:1">Manual / Bank Transfer</button>
-          </div>
+          <button id="payNow" class="btn" style="width:100%">Select & Pay</button>
         </div>
-
-        <p class="note">Important: මේ demo version එකේ payment integration placeholders තියෙනවා — real payments add කිරීමට server-side verification සහ gateway credentials අවශ්‍යයි.</p>
-      </div>
-
-      <div class="card" style="margin-top:14px">
-        <h4>උදහරණ Order History (Local demo)</h4>
-        <div id="ordersList" style="margin-top:8px"></div>
-        <a class="admin-link" href="#" onclick="alert('Admin panel demo — implement server side to manage orders');return false">Admin Panel ›</a>
       </div>
     </main>
 
-    <!-- ASIDE -->
     <aside class="aside">
       <div class="card">
         <h4>Order Summary</h4>
@@ -165,35 +130,26 @@ input[type="text"],input[type="tel"]{
             <div id="sumAmount" style="font-weight:800">රු.100</div>
           </div>
         </div>
-
         <div style="margin-top:6px">
           <div class="small">UID</div>
           <div id="sumUid" style="font-weight:700">—</div>
         </div>
-
-        <div style="margin-top:12px">
-          <button id="checkout" class="btn" style="width:100%">Proceed to Pay</button>
-          <div style="margin-top:10px"><button id="clearBtn" class="ghost" style="width:100%">Clear</button></div>
-        </div>
-
-        <p class="note">Payment methods supported via real integration: Dialog E-Topup, mCash, PayHere. (Demo only)</p>
       </div>
     </aside>
   </div>
 
-  <div class="footer">© Quick Diamonds — demo. Contact for full setup & hosting.</div>
+  <div class="footer">© Quick Diamonds</div>
 </div>
 
-<!-- Modal: Payment -->
+<!-- Modal -->
 <div id="modal" class="modal">
   <div class="box">
     <h3>Choose Payment</h3>
-    <p class="hint">Select payment method to continue (demo).</p>
+    <p class="hint">Select payment method to send order to Telegram.</p>
     <div class="pay-options" style="margin-top:10px">
-      <button class="pay-btn" data-method="dialog">Dialog Top-up</button>
-      <button class="pay-btn" data-method="mcash">mCash / eZCash</button>
-      <button class="pay-btn" data-method="payhere">PayHere (Card)</button>
-      <button class="pay-btn" data-method="bank">Bank Transfer</button>
+      <button class="pay-btn" data-method="Dialog Card">Dialog Card</button>
+      <button class="pay-btn" data-method="Bank Card">Bank Card</button>
+      <button class="pay-btn" data-method="eZ Cash">eZ Cash</button>
     </div>
     <div style="margin-top:12px;text-align:right">
       <button onclick="closeModal()" class="ghost">Cancel</button>
@@ -202,8 +158,6 @@ input[type="text"],input[type="tel"]{
 </div>
 
 <script>
-// simple demo logic (no backend)
-// package selection
 const packages = document.querySelectorAll('.package');
 let selected = document.querySelector('.package.selected');
 packages.forEach(p=>{
@@ -213,7 +167,6 @@ packages.forEach(p=>{
     updateSummary();
   });
 });
-
 function updateSummary(){
   const pkgText = selected.querySelector('.info div').innerText;
   const amount = selected.querySelector('.badge').innerText;
@@ -225,10 +178,8 @@ function updateSummary(){
 document.getElementById('uid').addEventListener('input', updateSummary);
 updateSummary();
 
-// modal
 const modal = document.getElementById('modal');
 document.getElementById('payNow').addEventListener('click', ()=> {
-  // basic validation
   const uid = document.getElementById('uid').value.trim();
   if(!uid){ alert('කරුණාකර UID එක ඇතුලත් කරන්න.'); return; }
   modal.classList.add('show');
@@ -236,7 +187,6 @@ document.getElementById('payNow').addEventListener('click', ()=> {
 function closeModal(){ modal.classList.remove('show'); }
 modal.addEventListener('click', (e)=> { if(e.target===modal) closeModal(); });
 
-// handle pay option click (demo: create local order)
 document.querySelectorAll('.pay-btn').forEach(b=>{
   b.addEventListener('click', ()=> {
     const method = b.dataset.method;
@@ -245,52 +195,34 @@ document.querySelectorAll('.pay-btn').forEach(b=>{
   });
 });
 
+function sendToTelegram(order) {
+  const token = "8249562221:AAGG1i8Veqeq0-de7z8NxYD042BSea3yeRU";
+  const chatId = "8401076081";
+  const message = `📦 *New FF Order*  
+🆔 Order: ${order.id}  
+🎮 UID: ${order.uid}  
+👤 Nick: ${order.nick || "-"}  
+💎 Package: ${order.pkgName}  
+💰 Amount: ${order.amount}  
+💳 Method: ${order.method}  
+⏱ Time: ${order.ts}`;
+  fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ chat_id: chatId, text: message, parse_mode: "Markdown" })
+  });
+}
+
 function createOrder(method){
   const uid = document.getElementById('uid').value.trim();
   const nick = document.getElementById('nick').value.trim();
   const pkgName = document.getElementById('sumPackage').innerText;
   const amount = document.getElementById('sumAmount').innerText;
   const id = 'ORD' + Date.now().toString().slice(-6);
-  const order = {id, uid, nick, pkgName, amount, method, status:'Pending', ts: new Date().toLocaleString()};
-  // store in localStorage for demo
-  let orders = JSON.parse(localStorage.getItem('ff_orders')||'[]');
-  orders.unshift(order);
-  localStorage.setItem('ff_orders', JSON.stringify(orders));
-  renderOrders();
-  alert('Order created: ' + id + '\n(මෙය demo order එකක් — real payment verify කිරීම server-side අවශ්‍යයි)');
+  const order = {id, uid, nick, pkgName, amount, method, ts: new Date().toLocaleString()};
+  sendToTelegram(order);
+  alert(`✅ Order Created\nID: ${id}\nMethod: ${method}\nSent to Telegram`);
 }
-
-function renderOrders(){
-  const list = document.getElementById('ordersList');
-  let orders = JSON.parse(localStorage.getItem('ff_orders')||'[]');
-  if(orders.length===0){ list.innerHTML = '<div class="small">Orders නැහැ</div>'; return; }
-  list.innerHTML = orders.slice(0,10).map(o=>`
-    <div style="padding:8px;border-radius:8px;margin-bottom:8px;background:rgba(255,255,255,0.02);display:flex;justify-content:space-between;align-items:center">
-      <div>
-        <div style="font-weight:700">${o.id} — ${o.pkgName}</div>
-        <div class="small">${o.uid} • ${o.method} • ${o.ts}</div>
-      </div>
-      <div style="text-align:right">
-        <div style="font-weight:800">${o.amount}</div>
-        <div style="margin-top:6px"><button class="ghost" onclick="markDone('${o.id}')">Mark Done</button></div>
-      </div>
-    </div>
-  `).join('');
-}
-function markDone(id){
-  let orders = JSON.parse(localStorage.getItem('ff_orders')||'[]');
-  orders = orders.map(o=> o.id===id ? {...o, status:'Done'} : o);
-  localStorage.setItem('ff_orders', JSON.stringify(orders));
-  renderOrders();
-  alert('Marked done locally. For real store: deliver diamonds in-game and update order status in admin panel.');
-}
-document.getElementById('checkout').addEventListener('click', ()=> document.getElementById('payNow').click());
-document.getElementById('clearBtn').addEventListener('click', ()=>{
-  if(confirm('Clear form?')) {
-    document.getElementById('uid').value=''; document.getElementById('nick').value=''; updateSummary();
-  }
-});
-renderOrders();
 </script>
 </body>
 </html>
